@@ -8,6 +8,7 @@
         :root {
             --primary-color: #1DA1F2; /* X 藍 */
             --accent-color: #ff4757;  /* 報名按鈕紅 */
+            --youtube-red: #FF0000;   /* YouTube 紅 */
             --bg-color: #f4f7f6;
         }
         body {
@@ -33,21 +34,9 @@
             width: 100%; height: 600px; border: 1px solid #eee; border-radius: 8px;
         }
 
-        /* 影片響應式 */
-        .video-wrapper {
-            position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px;
-        }
-        .video-wrapper iframe {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-        }
-
-        /* X 時間軸並排 */
+        /* 影片與資訊牆響應式容器 */
         .social-grid {
             display: flex; gap: 20px; flex-wrap: wrap;
-        }
-        .social-item {
-            flex: 1; min-width: 300px; height: 500px; 
-            border: 1px solid #eee; border-radius: 10px; overflow-y: auto;
         }
 
         /* 表單區塊 */
@@ -59,20 +48,19 @@
 
         @media (max-width: 600px) {
             .pdf-container { height: 400px; }
-            .social-item { min-width: 100%; }
         }
     </style>
 </head>
 <body>
 
-<header style="background: linear-gradient(135deg, #1a1a1a 0%, #333 100%); color: white; padding: 60px 20px; text-align: center;">
+<header>
     <h1 style="font-size: 2.5em; margin: 0; padding-bottom: 10px;">ストラテジーゲーム対抗戦<br>応募サイト</h1>
     <h2 style="font-size: 1.8em; color: #ffffff; font-weight: 500; margin: 0; opacity: 0.9;">■有償配信案件■【株式会社IGG Japan】</h2>
 </header>
 
 <div class="container">
     
-<div class="card">
+    <div class="card">
         <h2>📋 会社紹介情報 (PDF)</h2>
         <iframe src="https://docs.google.com/viewer?url=https://waxion66-ux.github.io/IGG-Event/activity_info.pdf&embedded=true" class="pdf-container"></iframe>
         
@@ -85,10 +73,8 @@
                 <span style="background: var(--primary-color); width: 8px; height: 24px; margin-right: 12px; border-radius: 4px;"></span>
                 活動規則與參賽細則
             </h3>
-            
             <div style="background-color: #f9f9f9; padding: 20px; border-radius: 10px; margin-top: 15px;">
                 <p style="font-weight: bold; color: #d63031; margin-top: 0;">⚠️ 注意事項：本活動為長期舉辦，請務必詳閱以下規則。</p>
-                
                 <ul style="line-height: 2; color: #444; padding-left: 20px;">
                     <li><strong>1. 參賽對象：</strong> 歡迎各平台（YouTube/Twitch 等）配信者報名參與。</li>
                     <li><strong>2. 內容規範：</strong> 配信過程中須遵守平台守則，不得有違規言論或作弊行為。</li>
@@ -101,66 +87,70 @@
     </div>
 
     <div class="card">
-        <h2>🎥 官方宣傳影片</h2>
-        <div class="video-wrapper">
-            <iframe src="https://www.youtube.com/embed/你的影片ID" frameborder="0" allowfullscreen></iframe>
+        <h2 style="display: flex; align-items: center; margin-bottom: 10px; border-left-color: var(--youtube-red);">
+            <span style="background: var(--youtube-red); width: 6px; height: 24px; margin-right: 12px; border-radius: 3px;"></span>
+            🎥 #ドゥームズデイ | 投稿影片牆
+        </h2>
+        <p style="color: #666; font-size: 0.9em; margin-bottom: 20px; padding-left: 18px;">
+            查看所有關於 #ドゥームズデイ 的精彩配信與投稿內容！
+        </p>
+
+        <div id="curator-feed-default-feed-layout" style="width: 100%; min-height: 500px;">
+            <a href="https://curator.io" target="_blank" class="crt-logo crt-tag">Powered by Curator.io</a>
         </div>
     </div>
 
-<div class="card">
-    <h2 style="display: flex; align-items: center; margin-bottom: 20px;">
-        <span style="background: #1DA1F2; width: 6px; height: 24px; margin-right: 12px; border-radius: 3px;"></span>
-        ロードモバイル | 公式情報
-    </h2>
-    
-    <div class="social-grid" style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; align-items: stretch;">
-        
-        <a href="https://lordsmobile.igg.com/" target="_blank" style="text-decoration: none; flex: 1; min-width: 300px; max-width: 500px; display: flex;">
-            <div style="background: #ffffff; border: 1px solid #eee; border-radius: 16px; padding: 30px; text-align: center; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; justify-content: space-between;">
-                <div style="flex-grow: 1; display: flex; align-items: center; justify-content: center;">
-                    <img src="logo_L.png" style="width: 450px; height: auto; max-height: 350px; object-fit: contain;">
+    <div class="card">
+        <h2 style="display: flex; align-items: center; margin-bottom: 20px;">
+            <span style="background: #1DA1F2; width: 6px; height: 24px; margin-right: 12px; border-radius: 3px;"></span>
+            ロードモバイル | 公式情報
+        </h2>
+        <div class="social-grid" style="justify-content: center; align-items: stretch;">
+            <a href="https://lordsmobile.igg.com/" target="_blank" style="text-decoration: none; flex: 1; min-width: 300px; max-width: 500px; display: flex;">
+                <div style="background: #ffffff; border: 1px solid #eee; border-radius: 16px; padding: 30px; text-align: center; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; justify-content: space-between;">
+                    <div style="flex-grow: 1; display: flex; align-items: center; justify-content: center;">
+                        <img src="logo_L.png" style="width: 450px; height: auto; max-height: 350px; object-fit: contain;">
+                    </div>
+                    <span style="background: #444; color: white; padding: 12px 24px; border-radius: 25px; font-size: 1em; font-weight: bold; width: fit-content; margin-top: 20px;">ロードモバイル公式サイトへ</span>
                 </div>
-                <span style="background: #444; color: white; padding: 12px 24px; border-radius: 25px; font-size: 1em; font-weight: bold; width: fit-content; margin-top: 20px;">ロードモバイル公式サイトへ</span>
-            </div>
-        </a>
-
-        <a href="https://x.com/LM_eventsub" target="_blank" style="text-decoration: none; flex: 1; min-width: 300px; max-width: 500px; display: flex;">
-            <div style="background: #f7f9f9; border: 1px solid #e1e8ed; border-radius: 16px; padding: 30px; text-align: center; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; justify-content: space-between;">
-                <div style="flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                    <img src="icon_L.png" style="width: 250px; height: 250px; border-radius: 50%; margin-bottom: 15px; object-fit: cover; border: 5px solid white; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-                    <p style="color: #657786; font-size: 1em;">@LM_eventsub</p>
+            </a>
+            <a href="https://x.com/LM_eventsub" target="_blank" style="text-decoration: none; flex: 1; min-width: 300px; max-width: 500px; display: flex;">
+                <div style="background: #f7f9f9; border: 1px solid #e1e8ed; border-radius: 16px; padding: 30px; text-align: center; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; justify-content: space-between;">
+                    <div style="flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <img src="icon_L.png" style="width: 250px; height: 250px; border-radius: 50%; margin-bottom: 15px; object-fit: cover; border: 5px solid white; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                        <p style="color: #657786; font-size: 1em;">@LM_eventsub</p>
+                    </div>
+                    <span style="background: #1DA1F2; color: white; padding: 12px 24px; border-radius: 25px; font-size: 1em; font-weight: bold; width: fit-content; margin-top: 20px;">ロードモバイル 對抗戰イベント公式X</span>
                 </div>
-                <span style="background: #1DA1F2; color: white; padding: 12px 24px; border-radius: 25px; font-size: 1em; font-weight: bold; width: fit-content; margin-top: 20px;">ロードモバイル 對抗戰イベント公式X</span>
-            </div>
-        </a>
+            </a>
+        </div>
     </div>
-</div>
 
-<div class="card" style="margin-top: 40px;">
-    <h2 style="display: flex; align-items: center; margin-bottom: 20px;">
-        <span style="background: #1DA1F2; width: 6px; height: 24px; margin-right: 12px; border-radius: 3px;"></span>
-        ドゥームズデイ | 公式情報
-    </h2>
-    <div class="social-grid" style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; align-items: stretch;">
-        <a href="https://dls.igg.com/" target="_blank" style="text-decoration: none; flex: 1; min-width: 300px; max-width: 500px; display: flex;">
-            <div style="background: #ffffff; border: 1px solid #eee; border-radius: 16px; padding: 30px; text-align: center; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; justify-content: space-between;">
-                <div style="flex-grow: 1; display: flex; align-items: center; justify-content: center;">
-                    <img src="logo_S.png" style="width: 450px; height: auto; max-height: 350px; object-fit: contain;">
+    <div class="card" style="margin-top: 40px;">
+        <h2 style="display: flex; align-items: center; margin-bottom: 20px;">
+            <span style="background: #1DA1F2; width: 6px; height: 24px; margin-right: 12px; border-radius: 3px;"></span>
+            ドゥームズデイ | 公式情報
+        </h2>
+        <div class="social-grid" style="justify-content: center; align-items: stretch;">
+            <a href="https://dls.igg.com/" target="_blank" style="text-decoration: none; flex: 1; min-width: 300px; max-width: 500px; display: flex;">
+                <div style="background: #ffffff; border: 1px solid #eee; border-radius: 16px; padding: 30px; text-align: center; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; justify-content: space-between;">
+                    <div style="flex-grow: 1; display: flex; align-items: center; justify-content: center;">
+                        <img src="logo_S.png" style="width: 450px; height: auto; max-height: 350px; object-fit: contain;">
+                    </div>
+                    <span style="background: #444; color: white; padding: 12px 24px; border-radius: 25px; font-size: 1em; font-weight: bold; width: fit-content; margin-top: 20px;">ドゥームズデイ公式サイトへ</span>
                 </div>
-                <span style="background: #444; color: white; padding: 12px 24px; border-radius: 25px; font-size: 1em; font-weight: bold; width: fit-content; margin-top: 20px;">ドゥームズデイ公式サイトへ</span>
-            </div>
-        </a>
-        <a href="https://x.com/dlsevent_sub" target="_blank" style="text-decoration: none; flex: 1; min-width: 300px; max-width: 500px; display: flex;">
-            <div style="background: #f7f9f9; border: 1px solid #e1e8ed; border-radius: 16px; padding: 30px; text-align: center; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; justify-content: space-between;">
-                <div style="flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                    <img src="icon_S.png" style="width: 250px; height: 250px; border-radius: 50%; margin-bottom: 15px; object-fit: cover; border: 5px solid white; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-                    <p style="color: #657786; font-size: 1em;">@dlsevent_sub</p>
+            </a>
+            <a href="https://x.com/dlsevent_sub" target="_blank" style="text-decoration: none; flex: 1; min-width: 300px; max-width: 500px; display: flex;">
+                <div style="background: #f7f9f9; border: 1px solid #e1e8ed; border-radius: 16px; padding: 30px; text-align: center; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; justify-content: space-between;">
+                    <div style="flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <img src="icon_S.png" style="width: 250px; height: 250px; border-radius: 50%; margin-bottom: 15px; object-fit: cover; border: 5px solid white; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                        <p style="color: #657786; font-size: 1em;">@dlsevent_sub</p>
+                    </div>
+                    <span style="background: #1DA1F2; color: white; padding: 12px 24px; border-radius: 25px; font-size: 1em; font-weight: bold; width: fit-content; margin-top: 20px;">ドゥームズデイ 對抗戰イベント公式X</span>
                 </div>
-                <span style="background: #1DA1F2; color: white; padding: 12px 24px; border-radius: 25px; font-size: 1em; font-weight: bold; width: fit-content; margin-top: 20px;">ドゥームズデイ 對抗戰イベント公式X</span>
-            </div>
-        </a>
+            </a>
+        </div>
     </div>
-</div>
 
     <div class="card" id="apply">
         <h2>📝 立即線上報名</h2>
@@ -172,6 +162,15 @@
 <footer>
     &copy; 2026 活動籌備委員會. All Rights Reserved.
 </footer>
+
+<script type="text/javascript">
+/* curator-feed-default-feed-layout */
+(function(){
+var i,e,d=document,s="script";i=d.createElement("script");i.async=1;i.charset="UTF-8";
+i.src="https://cdn.curator.io/published/bfbfdf32-23f0-4b90-b9ee-6a1877d69946.js";
+e=d.getElementsByTagName(s)[0];e.parentNode.insertBefore(i, e);
+})();
+</script>
 
 </body>
 </html>
